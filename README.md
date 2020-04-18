@@ -13,16 +13,16 @@ in vicinity of COVID-19 and has the following features:
 ##### Interactive Chatbot
 
  This is an interactive bot which will resolve 
- all your queries and provide implementable solutions to it.
+ all your queries related to the disease and provide implementable solutions to them.
 
   
 ##### Some useful insights
- As an addition to this,we would also be providing useful insights
+ In addition to the above, we would also be providing useful insights
  from our end, which would prove to be beneficial.
  
 ##### The current situation Overview
- We would also be giving the latest update and overview of
- the current on-going situation to help you keep track of it
+ We would also be giving the latest updates and overview of
+ the on-going situation to help you keep track of it.
  
  
  
