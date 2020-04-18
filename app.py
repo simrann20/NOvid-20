@@ -20,10 +20,11 @@ def predict():
 
     result = prediction[0]
 
-    if (result==1):
-        output = 'You do not have CoronaVirus'
-    else :
-         output = 'You do have Coronavirus'
+    if (result == 1):
+        output = 'Severe Symptoms'
+    
+    else:
+        output = 'No Symptoms'
 
     return render_template('index.html', prediction_text='{}'.format(output))
 

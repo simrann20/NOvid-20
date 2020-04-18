@@ -1,174 +1,188 @@
+#!/usr/bin/env python
+# coding: utf-8
 
+# In[1]:
 
 
 import pandas as pd
 import numpy as np
-import pickle
+import matplotlib.pyplot as plt
 
 
-# In[7]:
+
+# In[2]:
 
 
-df = pd.read_csv(r'C:\Users\vividha\Desktop\Datasets\covid19 dataset\Cleaned-Data.csv')
+df = pd.read_csv('Cleaned-Data.csv')
 df.tail()
 
 
-# In[10]:
+# In[3]:
 
 
+df1 = pd.read_csv('Raw-Data.csv')
+df1.head()
 
 
-# In[16]:
+# In[4]:
 
 
 df.shape
 
 
-# In[45]:
+# In[5]:
 
 
+df1.dtypes
 
 
-# In[20]:
+# In[6]:
 
 
 df.dtypes
 
 
-# In[24]:
+# In[7]:
 
 
 df['Severity'] = (df.iloc[:, 19:23] == 1).idxmax(1)
 
 
-# In[27]:
+# In[8]:
 
 
 df.head()
 
 
-# In[31]:
+# In[9]:
 
 
 df['Severity'].value_counts()
 
 
-# In[165]:
+# In[10]:
 
 
-df['Target'] = df['Severity'].replace('Severity_None', 0).replace('Severity_Mild', 1).replace('Severity_Moderate', 1).replace('Severity_Severe', 1)
+df['Severity'] = df['Severity'].replace('Severity_Mild', 'Severe').replace('Severity_Severe', 'Mild').replace('Severity_Moderate', 'Moderate').replace('Severity_None', 'None')
+df.tail()
 
 
-# In[140]:
+# In[54]:
+
+
+df['Target'] = df['Severity'].replace('None', 0).replace('Mild', 0).replace('Moderate', 1).replace('Severe', 1)
+
+
+# In[12]:
 
 
 df.tail()
 
 
-# In[166]:
+# In[13]:
 
 
 df.iloc[:, 23:26].head()
 
 
-# In[167]:
+# In[14]:
 
 
 df['Contact'] = (df.iloc[:, 23:26] == 1).idxmax(1)
 
 
-# In[168]:
+# In[15]:
 
 
 df.head()
 
 
-# In[169]:
+# In[16]:
 
 
 df['Contact'].value_counts()
 
 
-# In[170]:
+# In[17]:
 
 
 df['Contact'] = df['Contact'].replace('Contact_No', 0).replace('Contact_Yes', 1).replace('Contact_Dont-Know', 2)
 
 
-# In[171]:
+# In[18]:
 
 
 df.head()
 
 
-# In[172]:
+# In[19]:
 
 
 df.dtypes
 
 
-# In[173]:
+# In[20]:
 
 
 df.iloc[:, 11:16].head()
 
 
-# In[174]:
+# In[21]:
 
 
 df['Age_Label'] = (df.iloc[:, 11:16] == 1).idxmax(1)
 df['Age_Label'] = df['Age_Label'].replace('Age_0-9', 0).replace('Age_10-19', 1).replace('Age_20-24', 2).replace('Age_25-59', 3).replace('Age_60+', 4)
 
 
-# In[175]:
+# In[22]:
 
 
 df.tail()
 
 
-# In[176]:
+# In[23]:
 
 
 df.iloc[:, 16:19].head()
 
 
-# In[177]:
+# In[24]:
 
 
 df['Gender'] = (df.iloc[:, 16:19] == 1).idxmax(1)
 df['Gender'] = df['Gender'].replace('Gender_Female', 1).replace('Gender_Male', 0).replace('Gender_Transgender', 2)
 
 
-# In[151]:
+# In[25]:
 
 
 df.head()
 
 
-# In[178]:
+# In[26]:
 
 
 df.columns
 
 
-# In[162]:
+# In[55]:
 
 
 X = df[['Fever', 'Tiredness', 'Dry-Cough', 'Difficulty-in-Breathing',
        'Sore-Throat', 'Pains', 'Nasal-Congestion',
        'Runny-Nose', 'Diarrhea', 'Contact', 'Age_Label',
        'Gender']]
-X.head()
+X.head(30)
 
 
-# In[179]:
+# In[56]:
 
 
 Y = df[['Target']]
 Y.head()
 
 
-# In[180]:
+# In[57]:
 
 
 from sklearn.model_selection import train_test_split
@@ -176,7 +190,7 @@ x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size = 0.2, rando
 x_train.shape, y_train.shape
 
 
-# In[181]:
+# In[58]:
 
 
 from sklearn.linear_model import LogisticRegression
@@ -184,26 +198,21 @@ LR = LogisticRegression()
 LR.fit(x_train, y_train)
 
 
-# In[182]:
+# In[59]:
 
 
 y_pred = LR.predict(x_test)
 
 
-# In[184]:
+# In[60]:
 
 
 import sklearn.metrics as skm
 skm.multilabel_confusion_matrix(y_test, y_pred)
 
 
-# In[185]:
+# In[61]:
 
 
 print(skm.classification_report(y_test, y_pred))
-
-pickle.dump(LR, open('ml.pkl', 'wb'))
-
-ml = pickle.load(open('ml.pkl', 'rb'))
-
 
