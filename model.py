@@ -20,8 +20,7 @@ df.tail()
 # In[3]:
 
 
-df1 = pd.read_csv('Raw-Data.csv')
-df1.head()
+
 
 
 # In[4]:
@@ -33,7 +32,7 @@ df.shape
 # In[5]:
 
 
-df1.dtypes
+
 
 
 # In[6]:
@@ -63,14 +62,12 @@ df['Severity'].value_counts()
 # In[10]:
 
 
-df['Severity'] = df['Severity'].replace('Severity_Mild', 'Severe').replace('Severity_Severe', 'Mild').replace('Severity_Moderate', 'Moderate').replace('Severity_None', 'None')
-df.tail()
 
 
 # In[54]:
 
 
-df['Target'] = df['Severity'].replace('None', 0).replace('Mild', 0).replace('Moderate', 1).replace('Severe', 1)
+df['Target'] = df['Severity'].replace('Severity_None', 0).replace('Severity_Mild', 1).replace('Severity_Moderate', 1).replace('Severity_Severe', 1)
 
 
 # In[12]:
@@ -215,4 +212,3 @@ skm.multilabel_confusion_matrix(y_test, y_pred)
 
 
 print(skm.classification_report(y_test, y_pred))
-
