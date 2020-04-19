@@ -9,11 +9,8 @@ var firebaseConfig =
     appId: "1:197816078794:web:296fd45866352452073f33",
     measurementId: "G-HKBX8JZKVF"
 };
-// Initialization
-  firebase.initializeApp(firebaseConfig);
 
-//Collection=Tables or Relations
-//Reference to Users table/collection
+  firebase.initializeApp(firebaseConfig);
 
 var UsersRef=firebase.database().ref('Users');
 
@@ -23,7 +20,6 @@ document.getElementById('reg').addEventListener('submit', submitForm);
 function submitForm(e)
 {  e.preventDefault();
 
-	//Store submitted values in variables
 	var name=getValue('name');
 	var id=getValue('id');
 	var email=getValue('email');
@@ -32,13 +28,10 @@ function submitForm(e)
 	var age=getValue('age');
 	var location=getValue('location');
 
-  //Pass variable values to database
     saveData(name, id, email, pass, gender, age, location);
 
-  //Display message when done
     document.querySelector('.alert').style.display='block';
 
-  //Hide alert after 5 seconds
     setTimeout(function()
     {  document.querySelector('.alert').style.display='none';
     }, 5000);
@@ -51,7 +44,7 @@ function getValue(id)
 function saveData(name, id, email, pass, gender, age, location)
 {  var newUserRef = UsersRef.push();
    newUserRef.set(
-   {	//Set column values to variable values
+   {
 	Name: name,
 	Username: id,
 	Email: email,
