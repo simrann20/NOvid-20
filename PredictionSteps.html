@@ -1,0 +1,86 @@
+<HTML> 
+<HEAD> 
+<TITLE> How to use the Predictor </TITLE>
+<META name="description" content="Find out how to use our COVID-19 predictor">
+<META http-equiv="Content-Type" content="text/html"; charset="utf-8">
+<META name="viewport" content="width=device-width, initial-scale=1">
+</HEAD>
+
+<BODY bgcolor="#EBD6FF" leftmargin="35" rightmargin="30" topmargin="10">
+<A name="top">
+<DIV class="header">
+<IMG src="https://i.ibb.co/MPYX40T/Logoput.png" alt="NOvid-20 Logo" border="0" align="right" height="110" width="150">
+</DIV>
+
+<BR> <BR> 
+<H2 style="font-family:Forte; color:#0AB819"> NOvid-20 </H2>
+<FONT color="#3CACAE" size=+1>
+An amazing PWA which is a solution to foretell the likelihood of being in vicinity of COVID-19 and has the following features:
+
+
+<OL>
+<LI style="color:#83BB12"> <B> Prediction model* </B> <BR>  </LI>
+This would be used for providing the likelihood of the disease based on various factors. <BR> <BR>
+
+<LI style="color:#83BB12"> <B> Interactive Chatbot </B> <BR> </LI>
+This is an interactive bot which will resolve all your queries related to the disease and provide implementable solutions to them. <BR> <BR>
+
+<LI style="color:#83BB12"> <B> Some useful insights </B> <BR> </LI>
+In addition to the above, we would also be providing useful insights from our end, which would prove to be beneficial. <BR> <BR>
+
+<LI style="color:#83BB12"> <B> The current situation's overview </B> <BR> </LI>
+We would also be giving the latest updates and overview of the on-going situation to help you keep track of it. <BR> <BR>
+</OL>
+</FONT>
+<BR> <BR>
+
+<CENTER>
+<H1 style="color:#C3B00C; font-family:Times New Roman"> Steps to run the Covid19 Predictor </H1> <br>
+</CENTER>
+<FONT size="+1">
+<B> Prerequisites </B> <BR>
+You must have Scikit Learn, Pandas (for Machine Learning Model) and Flask (for API)
+installed.
+Here are the links help install them, if you don't: <BR>
+Scikit Learn : &nbsp <A href="https://scikit-learn.org/stable/install.html#install-official-release"> Learn to install </A> <BR>
+Pandas : &nbsp &nbsp &nbsp &nbsp &nbsp <A href="https://www.python.org/downloads/"> Using pip </A> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <A href="https://www.anaconda.com/distribution/"> Using anaconda </A> <BR>
+Flask : &nbsp &nbsp &nbsp&nbsp&nbsp &nbsp&nbsp &nbsp 
+<A href="https://dev.to/sahilrajput/install-flask-and-create-your-first-web-application-2dba"> Learn to install </A> <BR> <BR>
+
+<B> Model Structure </B> <BR>
+This deployed model has four major parts : 
+<OL style="margin-top: 0">
+<LI>
+model.py - This contains code for our Machine Learning model to predict
+Covid19 on training data in 'Cleaned-data.csv' file.
+<LI> 
+app.py - This contains Flask APIs that receives user input through GUI and
+computes the predicted value based on our model and returns it.
+<LI>
+templates - This folder contains the HTML template to allow user to enter
+their details and symptoms and displays the predicted output.
+<LI>
+ml.pkl – This contains the pickle file of the predictor.
+</OL>
+
+<B> Running the Deployed Model </B> <BR> 
+1. Run app.py using below command to start Flask API. <BR>
+&nbsp &nbsp Ensure that you are in
+the local directory of the model containing app.py and ml.pkl file. <BR>
+<CENTER> <BR>
+<IMG align="middle" src="https://i.ibb.co/VHSyGD8/command.png" alt="command" height="200" width="800"> <BR> <BR> </CENTER>
+2. Navigate to URL http://127.0.0.1:5000/ <BR>
+&nbsp &nbsp The homepage will look like this: <BR> <BR>
+<CENTER> 
+<IMG src="https://i.ibb.co/KyvPDDg/output.png" alt="homepage" align="middle" height="300" width="600"> 
+</CENTER> <BR> <BR> <BR>
+
+<B> Once all this is done, </B> navigate to <A href="https://github.com/drishti-agarwal/wiehack-2.0/tree/master/covid19%20predictor"> this GitHub repository </A> to access all the aforementioned files.
+
+</FONT>
+<BR> <BR> <BR> <BR> <BR>
+
+<A href="#top"> Jump to the top </A> <BR>
+<A href="home.html" > Go to home page </A> <BR> <BR>
+</BODY>
+</HTML>
