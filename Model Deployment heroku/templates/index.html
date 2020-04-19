@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+<!-- <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">  -->
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Covid19 Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="number" name="Fever" placeholder="Fever" required="required" />
+        <input type="number" name="Tiredness" placeholder="Tiredness" required="required" />
+		<input type="number" name="Dry-Cough" placeholder="Dry-Cough" required="required" />
+    <input type="number" name="Difficulty-in-Breathing" placeholder="Difficulty-in-Breathing" required="required" />
+    <input type="number" name="Sore-throat" placeholder="Sore-throat" required="required" />
+    <input type="number" name="Pains" placeholder="Pains" required="required" />
+    <input type="number" name="Nasal-Congestion" placeholder="Nasal-Congestion" required="required" />
+<input type="number" name="Runny-Nose" placeholder="Runny-Nose" required="required" />
+<input type="number" name="Diarrhea" placeholder="Diarrhea" required="required" />
+<input type="number" name="Contact" placeholder="Contact" required="required" />
+<input type="number" name="Age_Label" placeholder="Age_Label" required="required" />
+	<input type="number" name="Gender" placeholder="Gender" required="required" /> 
+        
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
